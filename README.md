@@ -38,19 +38,6 @@ This project analyzes branded men’s t-shirt sales data to extract key business
 5. Removed temporary columns after transformation
 
 ---
-
-## 🧮 Key DAX Calculations
-
-```DAX
--- Profit %
-Profit % = RANDBETWEEN(2, 17)
-
--- Cost Price
-Cost Price = DIVIDE(100 * [Sales Price], 100 + [Profit %])
-
--- Discount %
-Discount % = DIVIDE([Marked Price] - [Sales Price], [Marked Price]) * 100
-
 ##**--
 📊 Dashboard Pages
 📌 Page 1: Brand Catalog
@@ -91,6 +78,19 @@ Retail business understanding: profit margin, pricing, discounting
 Add trend analysis over time (seasonal sales)
 
 Add filters for user-level interactions
+## 🧮 Key DAX Calculations
+
+```DAX
+-- Profit %
+Profit % = RANDBETWEEN(2, 17)
+
+-- Cost Price
+Cost Price = DIVIDE(100 * [Sales Price], 100 + [Profit %])
+
+-- Discount %
+Discount % = DIVIDE([Marked Price] - [Sales Price], [Marked Price]) * 100
+
+
 
 Use Python for sales prediction and clustering by brand type
 
