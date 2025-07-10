@@ -50,3 +50,51 @@ Cost Price = DIVIDE(100 * [Sales Price], 100 + [Profit %])
 
 -- Discount %
 Discount % = DIVIDE([Marked Price] - [Sales Price], [Marked Price]) * 100
+
+##**--
+📊 Dashboard Pages
+📌 Page 1: Brand Catalog
+A visually appealing brand listing page created with Canva as background.
+
+
+📌 Page 2: Brand Performance KPIs
+A complete dashboard analyzing brands on:
+
+Top 5 by: Discount %, Profit %, Sales Price, and Variety
+
+Bottom 5 by: Profit %
+
+Bar charts, pie charts, and KPI visuals used
+
+
+📈 Insights
+The Indian Garage Co. offers the highest average discount (72%)
+
+ARMANI Exchange has the highest sales price
+
+U.S. Polo Assn. & Bear House lead in product variety
+
+Choiceit, JOVEN, and LP Jeans are among the lowest profit brands
+
+📌 Skills Demonstrated
+Connecting Power BI to cloud data warehouse (BigQuery)
+
+Using Power Query for real-world data cleaning
+
+Writing DAX for business KPIs
+
+Designing user-friendly interactive dashboards
+
+Retail business understanding: profit margin, pricing, discounting
+
+🚀 What’s Next?
+Add trend analysis over time (seasonal sales)
+
+Add filters for user-level interactions
+
+Use Python for sales prediction and clustering by brand type
+
+🙋‍♂️ About Me
+Prince | Final-year CSE Student | Product + Data Analyst Enthusiast
+📍 Panjab University, Chandigarh
+💼 Worked with 10+ startups across product, analytics & BI -- ****
