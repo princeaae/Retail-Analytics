@@ -1,100 +1,137 @@
 # 👕 Men’s Retail Analytics Dashboard (Power BI + BigQuery)
 
-> **Type:** BI Dashboard  
-> **Tools Used:** Power BI, BigQuery, DAX, Power Query  
-> **Domain:** Retail | **Focus:** Sales, Profit %, Discount %, Brand Comparison
+> **Tools Used:** Power BI, Google BigQuery, Power Query, DAX  
+> **Project Type:** Business Intelligence | **Domain:** Retail Analytics
 
 ---
 
 ## 📌 Overview
 
-This project analyzes branded men’s t-shirt sales data to extract key business insights like top/bottom performing brands, pricing trends, discounting strategy, and profitability. The goal is to help retail teams optimize inventory and marketing based on data.
+This project analyzes a branded men’s t-shirt sales dataset to generate meaningful business insights. It identifies the top and bottom-performing brands based on profit %, discount %, and variety using a fully cloud-integrated data pipeline built on BigQuery and Power BI.
 
 ---
 
 ## 🎯 Objectives
 
-- Analyze brand-level performance by profit, discount, and variety
-- Clean and model raw sales data using Power BI and DAX
-- Visualize key KPIs using interactive dashboards
-- Practice BigQuery as a data source for real-world BI use
+- Analyze brand-wise performance based on sales, pricing, profit %, discount %, and product variety  
+- Clean raw data using Power Query and transform it into a reporting-ready model  
+- Use DAX to derive KPIs like Cost Price, Discount %, and Profit %  
+- Build a professional and interactive Power BI dashboard connected to BigQuery  
 
 ---
 
-## 🔄 Steps Followed
+## 🛠️ Tools & Techniques
 
-1. **Uploaded dataset to BigQuery** and ran basic SQL queries to understand schema
-2. **Connected BigQuery to Power BI** and loaded the dataset
-3. Cleaned and transformed data using **Power Query**:
-   - Fixed headers
-   - Converted text columns to proper data types (e.g., dates, decimals)
-   - Handled missing values in Sales Price
-4. Created custom logic to estimate **missing Marked Prices**:
-   - Added a `Factor` column:  
-     `= IF(Original Price is blank, 1.5, 0)`
-   - Created a new column:  
-     `= Sales Price * Factor`
-   - Used this to fill missing Marked Prices
-5. Removed temporary columns after transformation
+- **Google BigQuery** – Cloud data warehouse used to upload and query the raw CSV dataset  
+- **Power BI** – Used for visualization and data modeling  
+- **Power Query** – Performed data cleaning, header fixing, NaN handling, type conversion  
+- **DAX** – Created derived columns like Profit %, Discount %, and Cost Price  
+- **Canva** – Designed background images for the dashboards  
 
 ---
-##**--
-📊 Dashboard Pages
-📌 Page 1: Brand Catalog
-A visually appealing brand listing page created with Canva as background.
+
+## 🔄 Workflow Summary
+
+1. Uploaded `Men+Tshirt.csv` into BigQuery  
+2. Ran a few queries to explore the dataset  
+3. Connected BigQuery to Power BI  
+4. In Power Query:
+   - Used first row as headers  
+   - Removed NaN from sales  
+   - Converted columns to proper data types  
+5. Created a `Factor` column:  
+   `= IF(Original Price is blank, 1.5, 0)`  
+6. Multiplied sales with factor to create estimated marked price  
+7. Created conditional column:  
+   `= IF(Marked Price is blank, use Sales * Factor, else use existing Marked Price)`  
+8. Deleted helper columns  
+9. Added DAX Calculated Columns:  
+   ```DAX
+   Profit % = RANDBETWEEN(2, 17)  
+   Cost Price = DIVIDE(100 * [Sales Price], 100 + [Profit %])  
+   Discount % = DIVIDE([Marked Price] - [Sales Price], [Marked Price]) * 100  
+   ```  
+
+---
+
+## 📊 Dashboard Overview
+
+### 🟦 Page 1: Brand Catalog Overview
+
+Custom-designed landing page using Canva to display available brands in a clean layout using multi-row card.
+
+![Page 1](./page1.jpeg)
+
+---
+
+### 🟩 Page 2: Brand KPI Insights
+
+This page contains all key analytics and visuals based on metrics:
+
+✅ Top 5 Brands by:
+- Average Discount %
+- Average Profit %
+- Average Sales Price
+- Product Variety
+
+🔻 Bottom 5 Brands by:
+- Lowest Profit %
+
+📈 Visual Types Used:
+- KPI Cards
+- Bar Charts
+- Pie & Donut Charts
+- Slicers for interaction
+
+![Page 2](./page2.png)
+
+---
+
+### 📷 Optional Full Dashboard View
+
+If you have a full screenshot combining both pages, show it here:
+
+![Dashboard](./dashboard.png)
+
+---
+
+## 📈 Key Business Insights
+
+🏷️ The Indian Garage Co. had the highest average discount at ~72%  
+💰 ARMANI Exchange had the highest average sales price (~6.1K)  
+📦 U.S. Polo Assn. and Bear House had the largest product variety  
+⚠️ JOVEN, Choiceit, and LP Jeans had the lowest profit margins, signaling poor ROI  
+
+---
+
+## 💡 Skills Demonstrated
+
+- End-to-end BI workflow from cloud data ingestion (BigQuery) to insightful reporting (Power BI)  
+- Real-world data cleaning and wrangling using Power Query  
+- Writing DAX logic for business KPIs  
+- Visual storytelling using KPI dashboards  
+- Understanding of retail performance metrics and business implications  
+
+---
+
+## 📂 File Structure
+
+```
+├── README.md  
+├── page1.jpeg  
+├── page2.png  
+
+```
+
+---
+
+## 🙋‍♂️ About Me
+
+**Prince**  
+Final-year CSE student at Panjab University  
+Aspiring Data Analyst | Product & BI Enthusiast  
 
 
-📌 Page 2: Brand Performance KPIs
-A complete dashboard analyzing brands on:
+---
 
-Top 5 by: Discount %, Profit %, Sales Price, and Variety
-
-Bottom 5 by: Profit %
-
-Bar charts, pie charts, and KPI visuals used
-
-
-📈 Insights
-The Indian Garage Co. offers the highest average discount (72%)
-
-ARMANI Exchange has the highest sales price
-
-U.S. Polo Assn. & Bear House lead in product variety
-
-Choiceit, JOVEN, and LP Jeans are among the lowest profit brands
-
-📌 Skills Demonstrated
-Connecting Power BI to cloud data warehouse (BigQuery)
-
-Using Power Query for real-world data cleaning
-
-Writing DAX for business KPIs
-
-Designing user-friendly interactive dashboards
-
-Retail business understanding: profit margin, pricing, discounting
-
-🚀 What’s Next?
-Add trend analysis over time (seasonal sales)
-
-Add filters for user-level interactions
-## 🧮 Key DAX Calculations
-
-```DAX
--- Profit %
-Profit % = RANDBETWEEN(2, 17)
-
--- Cost Price
-Cost Price = DIVIDE(100 * [Sales Price], 100 + [Profit %])
-
--- Discount %
-Discount % = DIVIDE([Marked Price] - [Sales Price], [Marked Price]) * 100
-
-
-
-Use Python for sales prediction and clustering by brand type
-
-🙋‍♂️ About Me
-Prince | Final-year CSE Student | Product + Data Analyst Enthusiast
-📍 Panjab University, Chandigarh
-💼 Worked with 10+ startups across product, analytics & BI -- ****
+⭐ If this project helped you, feel free to star the repo and connect with me!
